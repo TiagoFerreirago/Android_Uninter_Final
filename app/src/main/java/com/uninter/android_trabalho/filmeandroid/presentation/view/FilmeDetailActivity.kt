@@ -8,9 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.uninter.android_trabalho.R
 import com.uninter.android_trabalho.filmeandroid.domain.entities.Filme
-import com.uninter.android_trabalho.filmeandroid.domain.entities.entitie
 
-class SiteDetailActivity : AppCompatActivity() {
+class FilmeDetailActivity : AppCompatActivity() {
 
     private lateinit var imgtitulo : ImageView
     private lateinit var txtname : TextView
@@ -67,6 +66,7 @@ class SiteDetailActivity : AppCompatActivity() {
                 else{
                     favorite(filme)
                 }
+                finish()
             }
         }
 

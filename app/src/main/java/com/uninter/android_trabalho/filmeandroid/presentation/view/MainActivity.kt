@@ -21,6 +21,6 @@ class MainActivity : AppCompatActivity() {
         )
 
         recycle.layoutManager = LinearLayoutManager(this)
-        recycle.adapter = SiteAdapter(itemList)
+        recycle.adapter = FilmeAdapter(itemList)
         }
     }
