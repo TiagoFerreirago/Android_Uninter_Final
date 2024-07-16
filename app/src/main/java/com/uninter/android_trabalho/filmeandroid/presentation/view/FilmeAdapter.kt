@@ -13,9 +13,9 @@ import com.uninter.android_trabalho.R
 import com.uninter.android_trabalho.filmeandroid.domain.entities.Filme
 import com.uninter.android_trabalho.filmeandroid.domain.entities.entitie
 
-class FilmeAdapter(private val itemList : List<Filme>) :RecyclerView.Adapter<FilmeAdapter.FilmeViewHolder>() {
+class FilmeAdapter(private val itemList : List<Filme>) :RecyclerView.Adapter<FilmeAdapter.ViewHolder>() {
 
-    class FilmeViewHolder(val item : View) :RecyclerView.ViewHolder(item){
+    class ViewHolder(val item : View) :RecyclerView.ViewHolder(item){
         private val basepath = "https://image.tmdb.org/t/p/w500";
         fun bindView(filme: Filme) {
             with(item){
@@ -23,7 +23,7 @@ class FilmeAdapter(private val itemList : List<Filme>) :RecyclerView.Adapter<Fil
 
                 var imgfundo = findViewById<ImageView>(R.id.img_capa_id)
 
-                Glide.with(this).load("${basepath}${filme.backdroppath}").into(imgfundo)
+                Glide.with(this).load("${basepath}${filme.backdropPath}").into(imgfundo)
 
                 findViewById<ImageView>(R.id.favorito_id).visibility= if(filme.favorite) View.VISIBLE else View.GONE
 
@@ -39,16 +39,16 @@ class FilmeAdapter(private val itemList : List<Filme>) :RecyclerView.Adapter<Fil
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_card_site, parent, false)
-        return  FilmeViewHolder(view)
+        return  ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return itemList.size
     }
 
-    override fun onBindViewHolder(holder: FilmeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        val item = itemList[position]
         holder.bindView(item)
 

@@ -5,22 +5,34 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uninter.android_trabalho.R
-import com.uninter.android_trabalho.filmeandroid.domain.entities.entitie
+import com.uninter.android_trabalho.filmeandroid.data.repository.FilmeAPIRepository
+
+import com.uninter.android_trabalho.filmeandroid.domain.entities.Filme
+
 
 class MainActivity : AppCompatActivity() {
+    lateinit var  recycle : RecyclerView;
+    private var filmes : List<Filme> = listOf();
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recycle : RecyclerView = findViewById(R.id.recycler_view)
+        recycle = findViewById(R.id.recycler_view)
 
-        val itemList = listOf(
-            entitie("Item 1", "Subtitle 1"),
-            entitie("Item 2", "Subtitle 2"),
-            entitie("Item 3", "Subtitle 3")
-        )
+       Thread(Runnable {
+           FilmeAPIRepository.get()?.let{
+                filmes = it;
+           }
+           recycle.post {
+               loadRecycleView()
+           }
+           }).start();
+       }
+    fun loadRecycleView(){
 
-        recycle.layoutManager = LinearLayoutManager(this)
-        recycle.adapter = FilmeAdapter(itemList)
-        }
+        recycle.layoutManager = LinearLayoutManager(this);
+        recycle.adapter = FilmeAdapter(filmes);
     }
+
+}
+

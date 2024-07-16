@@ -49,23 +49,23 @@ class FilmeDetailActivity : AppCompatActivity() {
 
 
         filme?.let{filme ->
-            Glide.with(this).load("${basepath}${filme.posterpath}").into(imgtitulo)
+            Glide.with(this).load("${basepath}${filme.posterPath}").into(imgtitulo)
             txtname.text = filme.title;
-            txtlinguagem.text = filme.originallanguage;
-            txtmedia.text = filme.voteaverage.toString();
-            txtvotos.text = filme.votecount.toString();
-            txtlancamentos.text = filme.releasedate;
-            Glide.with(this).load("${basepath}${filme.backdroppath}").into(imgprincipal)
-            txtprincipal.text= filme.text;
+            txtlinguagem.text = filme.originalLanguage;
+            txtmedia.text = filme.voteAverage.toString();
+            txtvotos.text = filme.voteCount.toString();
+            txtlancamentos.text = filme.releaseDate;
+            Glide.with(this).load("${basepath}${filme.backdropPath}").into(imgprincipal)
+            txtprincipal.text= filme.overview;
             btnfavoritos.text= if(filme.favorite) "Desfavoritar" else "Favoritos"
 
             btnfavoritos.setOnClickListener{
-                if(filme.favorite){
+                if(filme.favorite)
                     unfavorite(filme)
-                }
-                else{
+
+                else
                     favorite(filme)
-                }
+
                 finish()
             }
         }

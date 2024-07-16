@@ -10,23 +10,28 @@ data class Filme(
     @PrimaryKey
     val id : Int,
     @ColumnInfo("Linguagem")
-    val originallanguage : String,
+    @SerializedName("original_language")
+    val originalLanguage : String,
     @ColumnInfo("Titulo")
     val title : String,
     @ColumnInfo("Texto")
-    val text : String,
+    val overview : String,
+
     @ColumnInfo("Lançamento")
-    val releasedate : String,
+    @SerializedName("release_date")
+    val releaseDate : String,
     @ColumnInfo("Media_Votos")
-    val voteaverage : Float,
+    @SerializedName("vote_average")
+    val voteAverage : Float,
     @ColumnInfo("Votos_Totais")
-    val votecount : Int,
+    @SerializedName("vote_count")
+    val voteCount : Int,
     @ColumnInfo("Poster_path")
     @SerializedName("poster_path")
-    val posterpath : String,
+    val posterPath : String,
     @ColumnInfo("Backdrop_path")
     @SerializedName("backdrop_path")
-    val backdroppath : String,
+    val backdropPath : String,
     var favorite : Boolean
 
 ) : Serializable {
