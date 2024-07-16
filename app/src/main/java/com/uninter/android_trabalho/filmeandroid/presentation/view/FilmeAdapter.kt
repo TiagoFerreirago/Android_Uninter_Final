@@ -20,13 +20,13 @@ class FilmeAdapter(private val itemList : List<Filme>) :RecyclerView.Adapter<Fil
         fun bindView(filme: Filme) {
             with(item){
 
-
+                //imagem da capa
                 var imgfundo = findViewById<ImageView>(R.id.img_capa_id)
-
                 Glide.with(this).load("${basepath}${filme.backdropPath}").into(imgfundo)
-
+                //favoritos da tela principal
                 findViewById<ImageView>(R.id.favorito_id).visibility= if(filme.favorite) View.VISIBLE else View.GONE
-
+                //titulo
+                findViewById<TextView>(R.id.txt_titulo_id).text = filme.title
                 item.setOnClickListener(){
                     val intent = Intent(it.context, FilmeDetailActivity::class.java)
                     intent.putExtra("filme", filme)
