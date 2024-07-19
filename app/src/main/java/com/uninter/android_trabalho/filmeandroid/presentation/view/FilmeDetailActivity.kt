@@ -81,10 +81,11 @@ class FilmeDetailActivity : AppCompatActivity() {
     }
 
     private fun unfavorite(filme: Filme) {
-        viewModel.favorite(filme)
+        viewModel.unfavorite(filme)
     }
     private fun favorite(filme: Filme) {
-        viewModel.unfavorite(filme)
+        viewModel.favorite(filme)
+
     }
 
 
